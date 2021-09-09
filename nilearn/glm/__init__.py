@@ -53,4 +53,5 @@ __all__ = [
 ]
 
 warn('The nilearn.glm module is experimental. '
-     'It may change in any future release of Nilearn.', FutureWarning)
+     'It may change in any future release of Nilearn.', FutureWarning,
+     stacklevel=2)

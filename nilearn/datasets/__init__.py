@@ -92,4 +92,4 @@ __all__ = ['MNI152_FILE_PATH', 'GM_MNI152_FILE_PATH', 'WM_MNI152_FILE_PATH',
 warn("Fetchers from the nilearn.datasets module will be "
      "updated in version 0.9 to return python strings "
      "instead of bytes and Pandas dataframes instead of "
-     "Numpy arrays.", FutureWarning)
+     "Numpy arrays.", FutureWarning, stacklevel=2)

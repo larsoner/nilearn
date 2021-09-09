@@ -16,8 +16,10 @@ from .image import get_data, new_img_like, resampling
 from ._utils.cache_mixin import cache
 from ._utils.ndimage import largest_connected_component, get_border_data
 from ._utils.niimg import _safe_get_data
-from .datasets import (load_mni152_template, load_mni152_gm_template,
-                       load_mni152_wm_template)
+with warnings.catch_warnings(record=True):
+    warnings.simplefilter('ignore', FutureWarning)
+    from .datasets import (load_mni152_template, load_mni152_gm_template,
+                        load_mni152_wm_template)
 
 
 class MaskWarning(UserWarning):
