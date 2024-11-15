@@ -2,7 +2,6 @@
 
 from sklearn.utils.estimator_checks import (
     check_decision_proba_consistency,
-    check_estimator_get_tags_default_keys,
     check_estimators_partial_fit_n_features,
     check_get_params_invariance,
     check_non_transformer_estimators_n_iter,
@@ -15,7 +14,6 @@ from sklearn.utils.estimator_checks import (
 VALID_CHECKS = [
     x.__name__
     for x in [
-        check_estimator_get_tags_default_keys,
         check_estimators_partial_fit_n_features,
         check_non_transformer_estimators_n_iter,
         check_decision_proba_consistency,
@@ -34,6 +32,18 @@ try:
     VALID_CHECKS.append(check_classifiers_one_label_sample_weights.__name__)
 except ImportError:
     ...
+
+
+# TODO
+# remove when bumping to sklearn >= 1.7
+try:
+    from sklearn.utils.estimator_checks import check_valid_tag_types
+except ImportError:
+    from sklearn.utils.estimator_checks import (
+        check_estimator_get_tags_default_keys as check_valid_tag_types,
+    )
+
+    VALID_CHECKS.append(check_valid_tag_types.__name__)
 
 
 def check_estimator(estimator=None, valid=True, extra_valid_checks=None):
